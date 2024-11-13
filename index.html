@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let products = [
+            {
+                "id": 1,
+                "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+                "price": 109.95,
+                "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+                "category": "men's clothing",
+                "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+                "rating": {
+                    "rate": 3.9,
+                    "count": 120
+                }
+            },
+            {
+                "id": 2,
+                "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+                "price": 695,
+                "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
+                "category": "jewelery",
+                "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+                "rating": {
+                    "rate": 4.6,
+                    "count": 400
+                }
+            },
+
+            {
+                "id": 3,
+                "title": "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
+                "price": 64,
+                "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
+                "category": "electronics",
+                "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+                "rating": {
+                    "rate": 3.3,
+                    "count": 203
+                }
+            },
+            {
+                "id": 4,
+                "title": "SanDisk SSD PLUS 1TB Internal SSD - SATA III 6 Gb/s",
+                "price": 109,
+                "description": "Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)",
+                "category": "electronics",
+                "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+                "rating": {
+                    "rate": 2.9,
+                    "count": 470
+                }
+            },
+            {
+                "id": 5,
+                "title": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+                "price": 56.99,
+                "description": "Note:The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+                "category": "women's clothing",
+                "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
+                "rating": {
+                    "rate": 2.6,
+                    "count": 235
+                }
+            },
+        ]
+
+        // Filter by Category
+
+        const electronics = products.filter(product => product.category === "electronics");
+        console.log(electronics);
+
+
+        // Map to Get Only Product Titles
+
+        const productTitles = products.map(product => product.title);
+        console.log(productTitles);
+
+
+        // Filter Products by Price Range
+
+        const affordableProducts = products.filter(product => product.price >= 50 && product.price <= 100);
+        console.log(affordableProducts);
+
+
+        // Calculate the Total Price of All Products using reduce
+
+        const totalPrice = products.reduce((sum, product) => sum + product.price, 0);
+        console.log(totalPrice);
+
+
+        // Get Products with a High Rating using filter
+
+        const highlyRatedProducts = products.filter(product => product.rating.rate >= 4);
+        console.log(highlyRatedProducts);
+
+
+        // Get Array of Product IDs for High-Demand Products using filter and map
+
+        const highDemandProductIds = products
+            .filter(product => product.rating.count > 150)
+            .map(product => product.id);
+        console.log(highDemandProductIds);
+
+
+        // Group Products by Category using reduce
+
+        const productsByCategory = products.reduce((groups, product) => {
+            const category = product.category;
+            if (!groups[category]) {
+                groups[category] = [];
+            }
+            groups[category].push(product);
+            return groups;
+        }, {});
+
+        console.log(productsByCategory);
+
+
+        // Sort Products by Price (Low to High)
+
+        const sortedByPrice = [...products].sort((a, b) => a.price - b.price);
+        console.log(sortedByPrice, "sortedByPrice");
+
+
+        // Find the First Product Over a Certain Price
+
+        const expensiveProduct = products.find(product => product.price > 125);
+        console.log(expensiveProduct);
+
+
+        // Count Products by Category using reduce
+
+        const categoryCounts = products.reduce((counts, product) => {
+            counts[product.category] = (counts[product.category] || 0) + 1;
+            return counts;
+        }, {});
+
+        console.log(categoryCounts);
+
+
+
+    </script>
+</body>
+
+</html>
